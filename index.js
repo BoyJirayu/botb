@@ -52,6 +52,13 @@ app.post('/webhook/', function (req, res) {
         ans = parseInt(text[1], 0) < parseInt(text[2], 0) ? parseInt(text[1], 0) : parseInt(text[2], 0)
         sendTextMessage(sender, ans)
       }
+    } else if (text[0] === 'avg') {
+      var avgSum = 0
+      for (var b = 1; b < text.length; b++) {
+        avgSum = avgSum + parseInt(text[b])
+      }
+      var avg = avgSum / (text.length - 1)
+      sendTextMessage(sender, avg)
     }
   }
   res.sendStatus(200)
