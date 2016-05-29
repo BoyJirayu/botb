@@ -4,7 +4,7 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var token = 'EAADIsq1dfVMBAFmawgoY6Ru51HcTh7NlpE8Y4ZA5EVpMC9htKSOe0z5Oc1199mHPJLPYvuyU4Fte0rggoRhFZClxQMOD4i0RLZCN4jqMiRofrZCrx5JezdsDFwNtRzaW6k1ZBSfo60CxKrwAONuPqkRvdJdYOYwOTZBH33V6zoSQZDZD'
 function sendTextMessage (sender, text) {
-  messageData = {
+  var messageData = {
     text: text
   }
   request({
