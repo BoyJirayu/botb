@@ -41,22 +41,22 @@ app.post('/webhook/', function (req, res) {
     var event = req.body.entry[0].messaging[i]
     var sender = event.sender.id
     if (event.message && event.message.text) {
-      var text = event.message.text.split(' ')
-      if (text[0] === 'sum') {
-        var ans = parseInt(text[1], 0) + parseInt(text[2], 0)
-        sendTextMessage(sender, ans)
-      } else if (text[0] === 'max') {
-        ans = parseInt(text[1], 0) > parseInt(text[2], 0) ? parseInt(text[1], 0) : parseInt(text[2], 0)
-        sendTextMessage(sender, ans)
-      } else if (text[0] === 'min') {
-        ans = parseInt(text[1], 0) < parseInt(text[2], 0) ? parseInt(text[1], 0) : parseInt(text[2], 0)
-        sendTextMessage(sender, ans)
-      }else if (text[0] === 'avg') {
-        text.splice(0, 1)
-        var result = text.reduce((prev, curr) => prev + parseInt(curr, 0), 0)
+      var data = event.message.text.split(' ')
+      if (data[0] === 'sum') {
+        var answer = parseInt(data[1], 0) + parseInt(data[2], 0)
+        sendTextMessage(sender, answer)
+      } else if (data[0] === 'max') {
+        answer = parseInt(data[1], 0) > parseInt(data[2], 0) ? parseInt(data[1], 0) : parseInt(data[2], 0)
+        sendTextMessage(sender, answer)
+      } else if (data[0] === 'min') {
+        answer = parseInt(data[1], 0) < parseInt(data[2], 0) ? parseInt(data[1], 0) : parseInt(data[2], 0)
+        sendTextMessage(sender, answer)
+      }else if (data[0] === 'avg') {
+        data.splice(0, 1)
+        var result = data.reduce((prev, curr) => prev + parseInt(curr, 0), 0)
         console.log(result)
-        ans = result / text.length
-        sendTextMessage(sender, ans)
+        answer = result / data.length
+        sendTextMessage(sender, answer)
       }
     }
   }
