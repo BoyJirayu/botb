@@ -26,7 +26,7 @@ function sendTextMessage (sender, text) {
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
-  res.send('Hello World')
+  res.send('Jirayu Chaimeeboon')
 })
 app.get('/webhook', function (req, res) {
   if (req.query['hub.verify_token'] === 'bot_eiei') {
